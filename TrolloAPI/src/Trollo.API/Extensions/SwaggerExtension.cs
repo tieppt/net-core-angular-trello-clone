@@ -17,7 +17,8 @@ namespace TrolloAPI.Extensions
     {
         private static readonly Type[] Controllers = new[]
         {
-            typeof(AuthController)
+            typeof(AuthController),
+            typeof(HomeController)
         }.OrderBy(c => c.Name).ToArray();
 
         public static void AddOpenApi(this IServiceCollection services)

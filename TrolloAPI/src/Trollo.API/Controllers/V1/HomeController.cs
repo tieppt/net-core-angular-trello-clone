@@ -7,10 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Trollo.Common.Contracts;
 
-namespace TrolloAPI.Controllers
-{
-    [ApiController]
-    public class HomeController : ControllerBase
+namespace TrolloAPI.Controllers.V1
+{ 
+    public class HomeController : ClientV1ControllerBase
     {
 
         private static readonly string[] Summaries = new[]
@@ -34,7 +33,7 @@ namespace TrolloAPI.Controllers
             });
         }
 
-        [HttpGet(ApiRoutes.Protected)]
+        [HttpGet("[Controller]/[Action]")]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public ActionResult<IEnumerable<WeatherForecast>> Get()
         {

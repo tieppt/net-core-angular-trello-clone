@@ -49,21 +49,22 @@ namespace TrolloAPI
             }
 
             app.UseHttpsRedirection();
+            app.UseRouting();
 
-            app.UseRouting()
-                .UseEndpoints(endpoints =>
-                {
-                    endpoints.MapControllers();
-                    endpoints.MapHealthChecksUI();
-                    endpoints.MapHealthChecks("/health-api", new HealthCheckOptions
-                    {
-                        Predicate = _ => true,
-                        ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
-                    });
-                });
-            app.UseAuthentication();
             app.UseAuthorization();
-            app.UseSwagger();
+            app.UseAuthentication();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+                endpoints.MapHealthChecksUI();
+                endpoints.MapHealthChecks("/health-api", new HealthCheckOptions
+                {
+                    Predicate = _ => true,
+                    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+                });
+                app.UseSwagger();
+            });
         }
     }
 }
