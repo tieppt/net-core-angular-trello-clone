@@ -63,8 +63,8 @@ namespace TrolloAPI
                     Predicate = _ => true,
                     ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
                 });
-                app.UseSwagger();
             });
+            app.UseSwagger();
         }
     }
 }

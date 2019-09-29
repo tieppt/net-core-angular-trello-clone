@@ -9,6 +9,7 @@ using Trollo.Common.Contracts;
 
 namespace TrolloAPI.Controllers.V1
 { 
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class HomeController : ClientV1ControllerBase
     {
 
@@ -24,18 +25,8 @@ namespace TrolloAPI.Controllers.V1
             _logger = logger;
         }
 
-        [HttpGet(ApiRoutes.RootIndex)]
-        public IActionResult Index()
-        {
-            return Ok(new
-            {
-                message = "App works!"
-            });
-        }
-
-        [HttpGet("[Controller]/[Action]")]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-        public ActionResult<IEnumerable<WeatherForecast>> Get()
+        [HttpGet("[controller]/[action]")]
+        public ActionResult<IEnumerable<WeatherForecast>> Protected()
         {
             var rng = new Random();
             var result = Enumerable.Range(1, 5).Select(index => new WeatherForecast

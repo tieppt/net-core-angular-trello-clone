@@ -20,14 +20,14 @@ namespace TrolloAPI.Controllers.V1
             _serviceInvoker = serviceInvoker;
         }
 
-        [HttpPost("[Controller]/[Action]")]
+        [HttpPost("[controller]/[action]")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(AuthSuccessResponse))]
         public async Task<IActionResult> Register([FromBody] RegisterRequest request)
         {
             return await _serviceInvoker.AsyncOk(() => _identityService.Register(request.Email, request.Password));
         }
 
-        [HttpPost("[Controller]/[Action]")]
+        [HttpPost("[controller]/[action]")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(AuthSuccessResponse))]
         public async Task<IActionResult> Login([FromBody] LoginRequest request)
         {

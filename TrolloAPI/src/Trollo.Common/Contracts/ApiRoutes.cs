@@ -10,7 +10,7 @@ namespace Trollo.Common.Contracts
 
         public const string Base = Root + "/" + Version;
 
-        public const string Protected = Base + "/protected";
+        public const string Protected = "protected";
 
         public static class Auth
         {
