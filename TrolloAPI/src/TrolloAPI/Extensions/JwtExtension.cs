@@ -29,6 +29,20 @@ namespace TrolloAPI.Extensions
                 ValidAudience = jwtSettings["Audience"],
                 IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings["Secret"]))
             };
+
+            // Add Identity
+            services.AddIdentity<AppUser, UserRole>(options =>
+                {
+                    // configure identity options
+                    options.Password.RequireDigit = true;
+                    options.Password.RequireLowercase = true;
+                    options.Password.RequireUppercase = true;
+                    options.Password.RequireNonAlphanumeric = true;
+                    options.Password.RequiredLength = 6;
+                })
+                .AddEntityFrameworkStores<AppIdentityDbContext>()
+                .AddDefaultTokenProviders();
+
             services.AddAuthentication(options =>
                     {
                         options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -43,18 +57,6 @@ namespace TrolloAPI.Extensions
                     options.TokenValidationParameters = tokenValidationParameters;
                 });
 
-            // Add Identity
-            services.AddIdentity<AppUser, UserRole>(options =>
-                {
-                    // configure identity options
-                    options.Password.RequireDigit = true;
-                    options.Password.RequireLowercase = true;
-                    options.Password.RequireUppercase = true;
-                    options.Password.RequireNonAlphanumeric = true;
-                    options.Password.RequiredLength = 6;
-                })
-                .AddEntityFrameworkStores<AppIdentityDbContext>()
-                .AddDefaultTokenProviders();
         }
     }
 }
