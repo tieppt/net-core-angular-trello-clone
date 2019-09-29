@@ -53,7 +53,7 @@ namespace TrolloAPI
 
             app.UseAuthorization();
             app.UseAuthentication();
-            
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
@@ -63,7 +63,8 @@ namespace TrolloAPI
                     Predicate = _ => true,
                     ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
                 });
-            app.UseSwagger();
+                app.UseSwagger();
+            });
         }
     }
 }
