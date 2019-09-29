@@ -35,7 +35,7 @@ namespace TrolloAPI.Controllers
         }
 
         [HttpGet(ApiRoutes.Protected)]
-        [Authorize]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public ActionResult<IEnumerable<WeatherForecast>> Get()
         {
             var rng = new Random();
