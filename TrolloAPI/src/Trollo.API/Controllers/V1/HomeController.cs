@@ -6,9 +6,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Trollo.Common.Contracts;
-using TrolloAPI.Controllers.V1;
 
-namespace TrolloAPI.Controllers
+namespace TrolloAPI.Controllers.V1
 { 
     public class HomeController : ClientV1ControllerBase
     {
