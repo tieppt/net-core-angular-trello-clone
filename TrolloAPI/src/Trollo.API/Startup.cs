@@ -61,7 +61,7 @@ namespace TrolloAPI
                         ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
                     });
                 });
-
+            app.UseAuthentication();
             app.UseAuthorization();
             app.UseSwagger();
         }

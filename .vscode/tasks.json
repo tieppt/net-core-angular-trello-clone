@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/TrolloAPI/src/TrolloAPI/TrolloAPI.csproj",
+                "${workspaceFolder}/TrolloAPI/src/Trollo.API/Trollo.API.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -19,7 +19,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/TrolloAPI/src/TrolloAPI/TrolloAPI.csproj",
+                "${workspaceFolder}/TrolloAPI/src/Trollo.API/Trollo.API.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -32,7 +32,7 @@
             "args": [
                 "watch",
                 "run",
-                "${workspaceFolder}/TrolloAPI/src/TrolloAPI/TrolloAPI.csproj",
+                "${workspaceFolder}/TrolloAPI/src/Trollo.API/Trollo.API.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
