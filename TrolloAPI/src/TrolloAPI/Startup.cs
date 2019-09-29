@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
@@ -29,6 +31,9 @@ namespace TrolloAPI
             services.AddControllers();
             services.ConfigureDependencyInjection();
             services.AddAuthJwt(Configuration);
+            services.AddHealthChecksUI()
+                .AddHealthChecks()
+                .AddSqlServer(Configuration.GetConnectionString("Default"), null, "SqlServer");
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,14 +46,19 @@ namespace TrolloAPI
 
             app.UseHttpsRedirection();
 
-            app.UseRouting();
+            app.UseRouting()
+                .UseEndpoints(endpoints =>
+                {
+                    endpoints.MapControllers();
+                    endpoints.MapHealthChecksUI();
+                    endpoints.MapHealthChecks("/health-api", new HealthCheckOptions
+                    {
+                        Predicate = _ => true,
+                        ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+                    });
+                });
 
             app.UseAuthorization();
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
         }
     }
 }
