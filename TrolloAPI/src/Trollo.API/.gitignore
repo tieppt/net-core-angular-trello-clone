@@ -33,5 +33,7 @@ msbuild.log
 msbuild.err
 msbuild.wrn
 
+healthchecksdb
+
 # Visual Studio 2015
 .vs/
