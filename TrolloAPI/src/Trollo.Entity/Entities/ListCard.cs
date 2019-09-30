@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace Trollo.Common.Entities
+namespace Trollo.Entity.Entities
 {
     public class ListCard : BaseEntity
     {

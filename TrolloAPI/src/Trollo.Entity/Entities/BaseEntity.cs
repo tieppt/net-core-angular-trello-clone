@@ -2,7 +2,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Trollo.Common.Entities
+namespace Trollo.Entity.Entities
 {
     public abstract class BaseEntity
     {

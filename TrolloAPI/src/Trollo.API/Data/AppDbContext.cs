@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using Trollo.Common.Entities;
+using Trollo.Entity.Entities;
 
 namespace TrolloAPI.Data
 {

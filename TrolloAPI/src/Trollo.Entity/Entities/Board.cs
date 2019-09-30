@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Trollo.Identity.Identity;
 
-namespace Trollo.Common.Entities
+namespace Trollo.Entity.Entities
 {
     public class Board : BaseEntity
     {
@@ -15,6 +16,9 @@ namespace Trollo.Common.Entities
         [Required]
         [MaxLength(16)]
         public string Scope { get; set; } // private or public
+        
+        public Guid UserId { get; set; }
+//        public AppUser User { get; set; }
         
         public List<ListCard> ListCards { get; set; }
 

@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Trollo.Common.Entities
+namespace Trollo.Entity.Entities
 {
     public class Card : BaseEntity
     {
@@ -11,7 +11,6 @@ namespace Trollo.Common.Entities
         public string Description { get; set; }
         public int Order { get; set; }
         public Guid ListCardId { get; set; }
-        public ListCard ListCard { get; set; }
 
         internal Card()
         {
