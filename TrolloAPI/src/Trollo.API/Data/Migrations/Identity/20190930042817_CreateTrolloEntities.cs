@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace TrolloAPI.Data.Migrations
+namespace TrolloAPI.Data.Migrations.Identity
 {
-    public partial class InitialCreate : Migration
+    public partial class CreateTrolloEntities : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

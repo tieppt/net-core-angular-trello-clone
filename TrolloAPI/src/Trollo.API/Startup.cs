@@ -32,11 +32,10 @@ namespace TrolloAPI
                     options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
                     options.SerializerSettings.Converters.Add(new StringEnumConverter(new CamelCaseNamingStrategy()));
                 });
+
+            services.ConfigureAppWithHealthCheck(Configuration);
             services.ConfigureDependencyInjection();
             services.AddAuthJwt(Configuration);
-            services.AddHealthChecksUI()
-                .AddHealthChecks()
-                .AddSqlServer(Configuration.GetConnectionString("Default"), null, "SqlServer");
             services.AddOpenApi();
         }
 
