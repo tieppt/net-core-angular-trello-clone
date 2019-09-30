@@ -35,9 +35,7 @@ namespace TrolloAPI
             services.ConfigureDependencyInjection();
             services.AddAutoMapper(typeof(Startup));
             services.AddAuthJwt(Configuration);
-            services.AddHealthChecksUI()
-                .AddHealthChecks()
-                .AddSqlServer(Configuration.GetConnectionString("Default"), null, "SqlServer");
+            services.AddHealthCheck(Configuration);
             services.AddOpenApi();
         }
 
