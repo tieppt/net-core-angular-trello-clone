@@ -16,7 +16,8 @@ namespace TrolloAPI.Data.Migrations
                     ModifiedAt = table.Column<DateTime>(nullable: false),
                     Title = table.Column<string>(maxLength: 255, nullable: false),
                     Status = table.Column<string>(maxLength: 16, nullable: false),
-                    Scope = table.Column<string>(maxLength: 16, nullable: false)
+                    Scope = table.Column<string>(maxLength: 16, nullable: false),
+                    UserId = table.Column<Guid>(nullable: false)
                 },
                 constraints: table =>
                 {

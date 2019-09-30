@@ -10,7 +10,7 @@ using TrolloAPI.Data;
 namespace TrolloAPI.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20190930042754_CreateTrolloEntities")]
+    [Migration("20190930081427_CreateTrolloEntities")]
     partial class CreateTrolloEntities
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -21,7 +21,7 @@ namespace TrolloAPI.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Trollo.Common.Entities.Board", b =>
+            modelBuilder.Entity("Trollo.Entity.Entities.Board", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -48,12 +48,15 @@ namespace TrolloAPI.Data.Migrations
                         .HasColumnType("nvarchar(255)")
                         .HasMaxLength(255);
 
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("Id");
 
                     b.ToTable("Boards");
                 });
 
-            modelBuilder.Entity("Trollo.Common.Entities.Card", b =>
+            modelBuilder.Entity("Trollo.Entity.Entities.Card", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -86,7 +89,7 @@ namespace TrolloAPI.Data.Migrations
                     b.ToTable("Cards");
                 });
 
-            modelBuilder.Entity("Trollo.Common.Entities.ListCard", b =>
+            modelBuilder.Entity("Trollo.Entity.Entities.ListCard", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -116,18 +119,18 @@ namespace TrolloAPI.Data.Migrations
                     b.ToTable("ListCards");
                 });
 
-            modelBuilder.Entity("Trollo.Common.Entities.Card", b =>
+            modelBuilder.Entity("Trollo.Entity.Entities.Card", b =>
                 {
-                    b.HasOne("Trollo.Common.Entities.ListCard", "ListCard")
+                    b.HasOne("Trollo.Entity.Entities.ListCard", "ListCard")
                         .WithMany("Cards")
                         .HasForeignKey("ListCardId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Trollo.Common.Entities.ListCard", b =>
+            modelBuilder.Entity("Trollo.Entity.Entities.ListCard", b =>
                 {
-                    b.HasOne("Trollo.Common.Entities.Board", "Board")
+                    b.HasOne("Trollo.Entity.Entities.Board", "Board")
                         .WithMany("ListCards")
                         .HasForeignKey("BoardId")
                         .OnDelete(DeleteBehavior.Cascade)

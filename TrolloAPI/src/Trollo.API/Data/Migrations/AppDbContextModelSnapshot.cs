@@ -119,7 +119,7 @@ namespace TrolloAPI.Data.Migrations
 
             modelBuilder.Entity("Trollo.Entity.Entities.Card", b =>
                 {
-                    b.HasOne("Trollo.Entity.Entities.ListCard", null)
+                    b.HasOne("Trollo.Entity.Entities.ListCard", "ListCard")
                         .WithMany("Cards")
                         .HasForeignKey("ListCardId")
                         .OnDelete(DeleteBehavior.Cascade)

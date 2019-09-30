@@ -11,7 +11,7 @@ namespace Trollo.Entity.Entities
         public string Description { get; set; }
         public int Order { get; set; }
         public Guid ListCardId { get; set; }
-
+        public ListCard ListCard { get; set; }
         internal Card()
         {
         }
