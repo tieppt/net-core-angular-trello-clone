@@ -32,7 +32,12 @@
     </ItemGroup>
 
     <ItemGroup>
+      <PackageReference Include="AutoMapper" Version="9.0.0" />
       <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="5.5.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Profiles" />
     </ItemGroup>
 
 </Project>

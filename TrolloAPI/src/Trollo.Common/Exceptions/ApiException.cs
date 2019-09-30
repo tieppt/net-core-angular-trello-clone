@@ -62,13 +62,7 @@ namespace Trollo.Common.Exceptions
 
         public override string GetContent()
         {
-            if (Content != null)
-            {
-                var body = JsonConvert.SerializeObject(Content);
-                return body;
-            }
-
-            return string.Empty;
+            return Content == null ? string.Empty : JsonConvert.SerializeObject(Content);
         }
 
         public TContent Content

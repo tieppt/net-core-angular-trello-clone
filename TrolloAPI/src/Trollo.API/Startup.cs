@@ -1,5 +1,5 @@
-using System.Text.Json;
-using System.Text.Json.Serialization;
+using System.Reflection;
+using AutoMapper;
 using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
@@ -33,6 +33,7 @@ namespace TrolloAPI
                     options.SerializerSettings.Converters.Add(new StringEnumConverter(new CamelCaseNamingStrategy()));
                 });
             services.ConfigureDependencyInjection();
+            services.AddAutoMapper(typeof(Startup));
             services.AddAuthJwt(Configuration);
             services.AddHealthChecksUI()
                 .AddHealthChecks()
