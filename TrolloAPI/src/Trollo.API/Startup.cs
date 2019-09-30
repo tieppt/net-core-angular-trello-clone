@@ -36,7 +36,7 @@ namespace TrolloAPI
             services.AddAutoMapper(typeof(Startup));
             services.AddAuthJwt(Configuration);
             services.AddHealthCheck(Configuration);
-            services.AddOpenApi();
+            services.AddSwagger();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

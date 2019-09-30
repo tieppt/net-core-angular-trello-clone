@@ -21,7 +21,7 @@ namespace TrolloAPI.Extensions
             typeof(HomeController)
         }.OrderBy(c => c.Name).ToArray();
 
-        public static void AddOpenApi(this IServiceCollection services)
+        public static void AddSwagger(this IServiceCollection services)
         {
             services.AddOpenApiDocument(settings =>
             {
