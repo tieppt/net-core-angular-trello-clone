@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using Trollo.Entity.Entities;
+using TrolloAPI.Data.Entities;
 
 namespace TrolloAPI.Data
 {
@@ -11,7 +11,12 @@ namespace TrolloAPI.Data
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
         }
-        
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
+        }
+
         public DbSet<Board> Boards { get; set; }
         public DbSet<ListCard> ListCards { get; set; }
         public DbSet<Card> Cards { get; set; }

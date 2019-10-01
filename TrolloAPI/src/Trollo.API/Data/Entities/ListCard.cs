@@ -2,17 +2,15 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace Trollo.Entity.Entities
+namespace TrolloAPI.Data.Entities
 {
     public class ListCard : BaseEntity
     {
-        [Required]
-        [MaxLength(255)]
         public string Title { get; set; }
         public int Order { get; set; }
         public Guid BoardId { get; set; }
-        public Board Board { get; set; }
-        public List<Card> Cards { get; set; }
+        public virtual Board Board { get; set; }
+        public virtual ICollection<Card> Cards { get; set; }
 
         internal ListCard()
         {
@@ -22,6 +20,7 @@ namespace Trollo.Entity.Entities
         {
             Title = title;
             Order = order;
+            Cards = new HashSet<Card>();
         }
     }
 }
