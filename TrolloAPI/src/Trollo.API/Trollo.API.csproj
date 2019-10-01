@@ -32,8 +32,4 @@
     <Folder Include="Data\Migrations" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Profiles" />
-  </ItemGroup>
-
 </Project>
