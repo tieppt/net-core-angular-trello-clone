@@ -3,8 +3,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Trollo.Entity.Entities;
 using Trollo.Identity.Identity;
+using TrolloAPI.Data.Entities;
 
 namespace TrolloAPI.Data
 {

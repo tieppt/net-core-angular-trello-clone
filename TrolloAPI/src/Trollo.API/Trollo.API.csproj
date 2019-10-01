@@ -24,7 +24,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Trollo.Common\Trollo.Common.csproj" />
-    <ProjectReference Include="..\Trollo.Entity\Trollo.Entity.csproj" />
     <ProjectReference Include="..\Trollo.Identity\Trollo.Identity.csproj" />
   </ItemGroup>
 
