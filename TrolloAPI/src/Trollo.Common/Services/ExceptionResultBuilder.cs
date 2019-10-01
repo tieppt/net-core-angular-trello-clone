@@ -60,7 +60,7 @@ namespace Trollo.Common.Services
         {
             var apiError = new ApiError
             {
-                Error = content ?? message,
+                Error = String.IsNullOrEmpty(content) ? message : content,
                 StackTrace = stackTrace
             };
 
