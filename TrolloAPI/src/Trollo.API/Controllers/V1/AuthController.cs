@@ -31,20 +31,7 @@ namespace TrolloAPI.Controllers.V1
         [SwaggerResponse(HttpStatusCode.OK, typeof(AuthSuccessResponse))]
         public async Task<IActionResult> Login([FromBody] LoginRequest request)
         {
-            var authResponse = await _identityService.LoginAsync(request.Email, request.Password);
-
-            if (!authResponse.Success)
-            {
-                return BadRequest(new AuthFailedResponse
-                {
-                    Errors = authResponse.Errors
-                });
-            }
-
-            return Ok(new AuthSuccessResponse
-            {
-                Token = authResponse.Token,
-            });
+            return await _serviceInvoker.AsyncOk(() => _identityService.Login(request.Email, request.Password));
         }
     }
 }
