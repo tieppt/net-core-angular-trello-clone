@@ -6,6 +6,7 @@ This is simple Trello clone
 
 - [Angular 8](https://angular.io/)
 - [.NET Core 3.0](https://dotnet.microsoft.com/)
+- [EntityFramework Core 3.0](https://docs.microsoft.com/en-us/ef/#pivot=efcore)
 
 ## Projects:
 

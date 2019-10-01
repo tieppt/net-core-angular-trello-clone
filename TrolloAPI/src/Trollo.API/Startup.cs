@@ -32,11 +32,12 @@ namespace TrolloAPI
                     options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
                     options.SerializerSettings.Converters.Add(new StringEnumConverter(new CamelCaseNamingStrategy()));
                 });
+
+            services.ConfigureAppWithHealthCheck(Configuration);
             services.ConfigureDependencyInjection();
             services.AddAutoMapper(typeof(Startup));
             services.AddAuthJwt(Configuration);
-            services.AddHealthCheck(Configuration);
-            services.AddSwagger();
+            services.AddOpenApi();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

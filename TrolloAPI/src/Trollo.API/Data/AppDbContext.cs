@@ -1,26 +1,35 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Trollo.Entity.Entities;
-using Trollo.Identity.Identity;
 
 namespace TrolloAPI.Data
 {
-    public class AppIdentityDbContext : IdentityDbContext<AppUser, UserRole, string>
+    public class AppDbContext : DbContext
     {
-        public AppIdentityDbContext(DbContextOptions<AppIdentityDbContext> options) : base(options)
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
-            
         }
         
+        public DbSet<Board> Boards { get; set; }
+        public DbSet<ListCard> ListCards { get; set; }
+        public DbSet<Card> Cards { get; set; }
+
+        /// <summary>
+        /// Override default behavior when create or update data
+        /// </summary>
+        /// <returns></returns>
         public override int SaveChanges()
         {
             AddAuditInfo();
             return base.SaveChanges();
         }
 
+        /// <summary>
+        /// Override default behavior when create or update data async
+        /// </summary>
+        /// <returns></returns>
         public Task<int> SaveChangesAsync()
         {
             AddAuditInfo();
