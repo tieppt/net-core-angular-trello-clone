@@ -1,5 +1,5 @@
-using System.Text.Json;
-using System.Text.Json.Serialization;
+using System.Reflection;
+using AutoMapper;
 using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
@@ -35,8 +35,9 @@ namespace TrolloAPI
 
             services.ConfigureAppWithHealthCheck(Configuration);
             services.ConfigureDependencyInjection();
+            services.AddAutoMapper(typeof(Startup));
             services.AddAuthJwt(Configuration);
-            services.AddOpenApi();
+            services.AddSwagger();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

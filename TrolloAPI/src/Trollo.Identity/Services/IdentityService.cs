@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Trollo.Common.Contracts.Responses;
-using Trollo.Common.Domain;
 using Trollo.Common.Exceptions;
 using Trollo.Identity.Helpers;
 using Trollo.Identity.Identity;
@@ -78,76 +77,26 @@ namespace Trollo.Identity.Services
             };
         }
 
-        public async Task<AuthenticationResult> RegisterAsync(string email, string password)
-        {
-            var existingUser = await _userManager.FindByEmailAsync(email);
-
-            if (existingUser != null)
-            {
-                return new AuthenticationResult
-                {
-                    Errors = new[] {"User with this email address already exists"}
-                };
-            }
-
-            var newUserId = Guid.NewGuid();
-            var now = DateTime.UtcNow;
-            var newUser = new AppUser
-            {
-                Id = newUserId.ToString(),
-                Email = email,
-                UserName = email,
-                CreatedAt = now,
-                ModifiedAt = now
-            };
-
-            var createdUser = await _userManager.CreateAsync(newUser, password);
-
-            if (!createdUser.Succeeded)
-            {
-                return new AuthenticationResult
-                {
-                    Errors = createdUser.Errors.Select(x => x.Description)
-                };
-            }
-
-            var createdUserRole = await _userManager.AddToRoleAsync(newUser, "User");
-            if (!createdUserRole.Succeeded)
-            {
-                return new AuthenticationResult
-                {
-                    Errors = createdUserRole.Errors.Select(x => x.Description)
-                };
-            }
-
-            return await JwtHelper.GenerateAuthenticationResultForUserAsync(newUser, _userManager, _roleManager,
-                _configuration);
-        }
-
-        public async Task<AuthenticationResult> LoginAsync(string email, string password)
+        public async Task<AuthSuccessResponse> Login(string email, string password)
         {
             var user = await _userManager.FindByEmailAsync(email);
-
             if (user == null)
             {
-                return new AuthenticationResult
-                {
-                    Errors = new[] {"User does not exist"}
-                };
+                throw new ApiException<string>(HttpStatusCode.NotFound, "User does not exist");
             }
 
             var userHasValidPassword = await _userManager.CheckPasswordAsync(user, password);
-
             if (!userHasValidPassword)
             {
-                return new AuthenticationResult
-                {
-                    Errors = new[] {"User/password combination is wrong"}
-                };
+                throw new ApiException<string>(HttpStatusCode.BadRequest, "Email/Password combination is invalid");
             }
 
-            return await JwtHelper.GenerateAuthenticationResultForUserAsync(user, _userManager, _roleManager,
+            var result = await JwtHelper.GenerateAuthenticationResultForUserAsync(user, _userManager, _roleManager,
                 _configuration);
+            return new AuthSuccessResponse
+            {
+                Token = result.Token
+            };
         }
     }
 }
