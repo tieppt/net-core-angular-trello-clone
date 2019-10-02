@@ -80,10 +80,7 @@ namespace Trollo.Common.Services
             {
                 var result = await serviceCall();
 
-                if (EqualityComparer<TResult>.Default.Equals(result, default))
-                {
-                    return new NotFoundResult();
-                }
+                if (EqualityComparer<TResult>.Default.Equals(result, default)) return new NotFoundResult();
 
                 return new OkObjectResult(result);
             }

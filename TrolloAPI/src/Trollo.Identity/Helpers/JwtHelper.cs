@@ -70,7 +70,7 @@ namespace Trollo.Identity.Helpers
             return new AuthenticationResult
             {
                 Success = true,
-                Token = tokenHandler.WriteToken(token),
+                Token = tokenHandler.WriteToken(token)
             };
         }
     }

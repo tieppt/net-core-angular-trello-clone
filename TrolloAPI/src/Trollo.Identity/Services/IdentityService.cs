@@ -14,9 +14,9 @@ namespace Trollo.Identity.Services
 {
     public class IdentityService : IIdentityService
     {
-        private readonly UserManager<AppUser> _userManager;
-        private readonly RoleManager<UserRole> _roleManager;
         private readonly IConfiguration _configuration;
+        private readonly RoleManager<UserRole> _roleManager;
+        private readonly UserManager<AppUser> _userManager;
 
         public IdentityService(
             UserManager<AppUser> userManager,
@@ -32,12 +32,10 @@ namespace Trollo.Identity.Services
         {
             var existingUser = await _userManager.FindByEmailAsync(email);
             if (existingUser != null)
-            {
                 throw new ApiException<AuthFailedResponse>(HttpStatusCode.BadRequest, new AuthFailedResponse
                 {
                     Errors = new[] {"User with this email address already exists"}
                 });
-            }
 
             var newUserId = Guid.NewGuid();
             var now = DateTime.UtcNow;
@@ -53,21 +51,17 @@ namespace Trollo.Identity.Services
             var createdUser = await _userManager.CreateAsync(newUser, password);
 
             if (!createdUser.Succeeded)
-            {
                 throw new ApiException<AuthFailedResponse>(HttpStatusCode.BadRequest, new AuthFailedResponse
                 {
                     Errors = createdUser.Errors.Select(x => x.Description)
                 });
-            }
 
             var createdUserRole = await _userManager.AddToRoleAsync(newUser, "User");
             if (!createdUserRole.Succeeded)
-            {
                 throw new ApiException<AuthFailedResponse>(HttpStatusCode.BadRequest, new AuthFailedResponse
                 {
                     Errors = createdUserRole.Errors.Select(x => x.Description)
                 });
-            }
 
             var result = await JwtHelper.GenerateAuthenticationResultForUserAsync(newUser, _userManager, _roleManager,
                 _configuration);
@@ -80,16 +74,11 @@ namespace Trollo.Identity.Services
         public async Task<AuthSuccessResponse> Login(string email, string password)
         {
             var user = await _userManager.FindByEmailAsync(email);
-            if (user == null)
-            {
-                throw new ApiException<string>(HttpStatusCode.NotFound, "User does not exist");
-            }
+            if (user == null) throw new ApiException<string>(HttpStatusCode.NotFound, "User does not exist");
 
             var userHasValidPassword = await _userManager.CheckPasswordAsync(user, password);
             if (!userHasValidPassword)
-            {
                 throw new ApiException<string>(HttpStatusCode.BadRequest, "Email/Password combination is invalid");
-            }
 
             var result = await JwtHelper.GenerateAuthenticationResultForUserAsync(user, _userManager, _roleManager,
                 _configuration);
