@@ -11,6 +11,5 @@ namespace TrolloAPI.Controllers.V1
     [Route("api/v1")]
     public abstract class ClientV1ControllerBase : ApiControllerBase
     {
-        
     }
 }

@@ -50,8 +50,6 @@ namespace TrolloAPI.Extensions
                     options.SaveToken = true;
                     options.TokenValidationParameters = tokenValidationParameters;
                 });
-
         }
     }
 }
-

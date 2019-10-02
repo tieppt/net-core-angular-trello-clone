@@ -11,7 +11,6 @@ namespace TrolloAPI.Controllers
         public override void OnActionExecuting(ActionExecutingContext context)
         {
             if (!context.ModelState.IsValid)
-            {
                 if (!ModelState.IsValid)
                 {
                     var errorList = ModelState.ToDictionary(
@@ -24,7 +23,6 @@ namespace TrolloAPI.Controllers
 
                     throw new ApiException<IDictionary<string, string[]>>("Invalid request", errorList);
                 }
-            }
 
             base.OnActionExecuting(context);
         }
