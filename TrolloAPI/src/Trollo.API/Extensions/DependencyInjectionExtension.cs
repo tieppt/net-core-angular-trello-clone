@@ -4,6 +4,8 @@ using Trollo.Common.Services;
 using Trollo.Common.Services.Contracts;
 using Trollo.Identity.Services;
 using Trollo.Identity.Services.Contracts;
+using TrolloAPI.Services;
+using TrolloAPI.Services.Contracts;
 
 namespace TrolloAPI.Extensions
 {
@@ -16,6 +18,7 @@ namespace TrolloAPI.Extensions
             services.AddSingleton<IExceptionResultBuilder, ExceptionResultBuilder>();
 
             services.AddScoped<IIdentityService, IdentityService>();
+            services.AddScoped<IBoardService, BoardService>();
         }
     }
 }
