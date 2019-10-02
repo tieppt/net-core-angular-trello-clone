@@ -13,6 +13,10 @@ namespace Trollo.Common.Filters
             _exceptionResultBuilder = exceptionResultBuilder;
         }
 
+        public void Dispose()
+        {
+        }
+
         public void OnException(ExceptionContext context)
         {
             var exception = context.Exception;
@@ -20,10 +24,6 @@ namespace Trollo.Common.Filters
             var result = _exceptionResultBuilder.Build(exception);
 
             context.Result = result;
-        }
-
-        public void Dispose()
-        {
         }
     }
 }

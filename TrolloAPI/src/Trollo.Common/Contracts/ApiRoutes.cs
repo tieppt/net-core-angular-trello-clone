@@ -3,7 +3,7 @@ namespace Trollo.Common.Contracts
     public static class ApiRoutes
     {
         public const string RootIndex = "";
-        
+
         public const string Root = "api";
 
         public const string Version = "v1";
@@ -19,7 +19,6 @@ namespace Trollo.Common.Contracts
             public const string Login = Index + "/login";
 
             public const string Register = Index + "/register";
-            
         }
     }
 }

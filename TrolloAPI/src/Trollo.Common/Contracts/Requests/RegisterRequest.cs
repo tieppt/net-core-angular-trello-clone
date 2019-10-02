@@ -4,9 +4,7 @@ namespace Trollo.Common.Contracts.Requests
 {
     public class RegisterRequest
     {
-        [Required]
-        [EmailAddress]
-        public string Email { get; set; }
+        [Required] [EmailAddress] public string Email { get; set; }
 
         [Required]
         [StringLength(32, ErrorMessage = "PASSWORD_MIN_LENGTH", MinimumLength = 6)]
@@ -14,7 +12,7 @@ namespace Trollo.Common.Contracts.Requests
 
         [Required]
         [StringLength(32, ErrorMessage = "PASSWORD_MIN_LENGTH", MinimumLength = 6)]
-        [Compare(nameof(RegisterRequest.Password))]
+        [Compare(nameof(Password))]
         public string ConfirmPassword { get; set; }
     }
 }

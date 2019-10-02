@@ -4,7 +4,7 @@ using TrolloAPI.Data.Entities;
 
 namespace TrolloAPI.Data.Configurations
 {
-    public class BoardConfiguration: IEntityTypeConfiguration<Board>
+    public class BoardConfiguration : IEntityTypeConfiguration<Board>
     {
         public void Configure(EntityTypeBuilder<Board> builder)
         {
@@ -15,7 +15,7 @@ namespace TrolloAPI.Data.Configurations
             builder.Property(b => b.Status)
                 .IsRequired()
                 .HasMaxLength(16);
-            
+
             builder.Property(b => b.Scope)
                 .IsRequired()
                 .HasMaxLength(16);

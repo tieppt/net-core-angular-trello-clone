@@ -12,9 +12,6 @@ namespace Trollo.Common.Exceptions
 
     public abstract class ApiException : Exception
     {
-        public HttpStatusCode StatusCode { get; set; }
-        protected object InternalContent { get; set; }
-
         protected ApiException(string message, object content = null) : this(HttpStatusCode.BadRequest, message, null,
             content)
         {
@@ -31,6 +28,9 @@ namespace Trollo.Common.Exceptions
             StatusCode = statusCode;
             InternalContent = content;
         }
+
+        public HttpStatusCode StatusCode { get; set; }
+        protected object InternalContent { get; set; }
 
         public abstract string GetContent();
 
@@ -56,19 +56,20 @@ namespace Trollo.Common.Exceptions
         {
         }
 
-        public ApiException(HttpStatusCode statusCode, TContent content = default, string message = "") : base(statusCode, message, content)
+        public ApiException(HttpStatusCode statusCode, TContent content = default, string message = "") : base(
+            statusCode, message, content)
         {
-        }
-
-        public override string GetContent()
-        {
-            return Content == null ? string.Empty : JsonConvert.SerializeObject(Content);
         }
 
         public TContent Content
         {
             get => (TContent) InternalContent;
             set => InternalContent = value;
+        }
+
+        public override string GetContent()
+        {
+            return Content == null ? string.Empty : JsonConvert.SerializeObject(Content);
         }
     }
 }

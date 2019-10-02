@@ -12,9 +12,8 @@ namespace TrolloAPI.Data
     {
         public AppIdentityDbContext(DbContextOptions<AppIdentityDbContext> options) : base(options)
         {
-            
         }
-        
+
         public override int SaveChanges()
         {
             AddAuditInfo();
@@ -29,15 +28,13 @@ namespace TrolloAPI.Data
 
         private void AddAuditInfo()
         {
-            var entries = ChangeTracker.Entries().Where(x => x.Entity is BaseEntity && (x.State == EntityState.Added || x.State == EntityState.Modified));
+            var entries = ChangeTracker.Entries().Where(x =>
+                x.Entity is BaseEntity && (x.State == EntityState.Added || x.State == EntityState.Modified));
             var now = DateTime.UtcNow;
             foreach (var entry in entries)
             {
-                if (entry.State == EntityState.Added)
-                {
-                    ((BaseEntity)entry.Entity).CreatedAt = now;
-                }
-                ((BaseEntity)entry.Entity).ModifiedAt = now;
+                if (entry.State == EntityState.Added) ((BaseEntity) entry.Entity).CreatedAt = now;
+                ((BaseEntity) entry.Entity).ModifiedAt = now;
             }
         }
     }

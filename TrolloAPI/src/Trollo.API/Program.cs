@@ -26,20 +26,20 @@ namespace TrolloAPI
                 var adminRole = new UserRole("Admin");
                 await roleManager.CreateAsync(adminRole);
             }
-                
+
             if (!await roleManager.RoleExistsAsync("User"))
             {
                 var userRole = new UserRole("User");
                 await roleManager.CreateAsync(userRole);
             }
+
             await host.RunAsync();
         }
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                });
+        public static IHostBuilder CreateHostBuilder(string[] args)
+        {
+            return Host.CreateDefaultBuilder(args)
+                .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); });
+        }
     }
 }

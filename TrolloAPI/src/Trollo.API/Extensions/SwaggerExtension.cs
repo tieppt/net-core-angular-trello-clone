@@ -8,7 +8,6 @@ using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
 using NSwag;
 using NSwag.Generation.Processors.Security;
-using TrolloAPI.Controllers;
 using TrolloAPI.Controllers.V1;
 
 namespace TrolloAPI.Extensions
@@ -18,7 +17,8 @@ namespace TrolloAPI.Extensions
         private static readonly Type[] Controllers = new[]
         {
             typeof(AuthController),
-            typeof(HomeController)
+            typeof(HomeController),
+            typeof(BoardController)
         }.OrderBy(c => c.Name).ToArray();
 
         public static void AddSwagger(this IServiceCollection services)

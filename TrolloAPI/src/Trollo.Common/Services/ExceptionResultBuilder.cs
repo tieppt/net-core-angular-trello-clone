@@ -1,6 +1,5 @@
 using System;
 using System.Net;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -12,12 +11,12 @@ namespace Trollo.Common.Services
 {
     public sealed class ExceptionResultBuilder : IExceptionResultBuilder
     {
-        private readonly IWebHostEnvironment _webHostEnvironment;
         private readonly ILogger<ExceptionResultBuilder> _logger;
+        private readonly IHostEnvironment _hostEnvironment;
 
-        public ExceptionResultBuilder(IWebHostEnvironment webHostEnvironment, ILogger<ExceptionResultBuilder> logger)
+        public ExceptionResultBuilder(IHostEnvironment hostEnvironment, ILogger<ExceptionResultBuilder> logger)
         {
-            _webHostEnvironment = webHostEnvironment;
+            _hostEnvironment = hostEnvironment;
             _logger = logger;
         }
 
@@ -25,11 +24,9 @@ namespace Trollo.Common.Services
         {
             var stackTrace = "No stack trace available";
 
-            if (!string.Equals(_webHostEnvironment.EnvironmentName, Environments.Production,
+            if (!string.Equals(_hostEnvironment.EnvironmentName, Environments.Production,
                 StringComparison.OrdinalIgnoreCase))
-            {
                 stackTrace = exception.GetBaseException().StackTrace;
-            }
 
             var statusCode = HttpStatusCode.InternalServerError;
             var content = string.Empty;
@@ -43,10 +40,7 @@ namespace Trollo.Common.Services
                 {
                     statusCode = apiException.StatusCode;
                     content = apiException.GetContent();
-                    if (!string.IsNullOrEmpty(apiException.Message))
-                    {
-                        message = apiException.GetBaseException().Message;
-                    }
+                    if (!string.IsNullOrEmpty(apiException.Message)) message = apiException.GetBaseException().Message;
 
                     break;
                 }
@@ -60,7 +54,7 @@ namespace Trollo.Common.Services
         {
             var apiError = new ApiError
             {
-                Error = String.IsNullOrEmpty(content) ? message : content,
+                Error = string.IsNullOrEmpty(content) ? message : content,
                 StackTrace = stackTrace
             };
 

@@ -1,6 +1,5 @@
 using System.Threading.Tasks;
 using Trollo.Common.Contracts.Responses;
-using Trollo.Common.ViewModels;
 
 namespace Trollo.Identity.Services.Contracts
 {
