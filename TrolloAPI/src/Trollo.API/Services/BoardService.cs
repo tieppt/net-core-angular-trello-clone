@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Trollo.API.Data;
 using Trollo.API.Data.Entities;
 using Trollo.API.Services.Contracts;
+using Trollo.Common.Exceptions;
 using Trollo.Common.ViewModels;
 
 namespace Trollo.API.Services
@@ -36,6 +37,24 @@ namespace Trollo.API.Services
             await _context.AddAsync(board);
             await _context.SaveChangesAsync();
             return _mapper.Map<BoardVm>(board);
+        }
+
+        public async Task<BoardVm> Update(Guid userId, Board board)
+        {
+            var existingBoard = await _context.Boards.FindAsync(board.Id);
+            if (existingBoard == null)
+            {
+                throw new NotFoundException("Board", board.Id);
+            }
+
+            if (!existingBoard.UserId.Equals(userId))
+            {
+                throw new UnauthorizedException();
+            }
+
+            existingBoard.Title = board.Title;
+            await _context.SaveChangesAsync();
+            return _mapper.Map<BoardVm>(existingBoard);
         }
     }
 }

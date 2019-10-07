@@ -10,5 +10,7 @@ namespace Trollo.API.Services.Contracts
     {
         Task<List<BoardVm>> GetAll(Guid userId);
         Task<BoardVm> Create(Board board);
+        
+        Task<BoardVm> Update(Guid userId, Board board);
     }
 }

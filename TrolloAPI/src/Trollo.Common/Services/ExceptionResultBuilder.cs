@@ -34,8 +34,14 @@ namespace Trollo.Common.Services
 
             switch (exception)
             {
-                case NotFoundException _:
-                    return new NotFoundResult();
+                case NotFoundException notFoundException:
+                {
+                    statusCode = notFoundException.StatusCode;
+                    content = notFoundException.GetContent();
+                    if (!string.IsNullOrEmpty(notFoundException.Message)) message = notFoundException.GetBaseException().Message;
+
+                    break;
+                }
                 case ApiException apiException:
                 {
                     statusCode = apiException.StatusCode;

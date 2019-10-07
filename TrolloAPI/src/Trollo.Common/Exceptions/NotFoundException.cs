@@ -11,7 +11,7 @@ namespace Trollo.Common.Exceptions
 
         public override string GetContent()
         {
-            return GetRawContent().ToString();
+            return Message;
         }
     }
 }

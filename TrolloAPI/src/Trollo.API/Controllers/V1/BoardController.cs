@@ -49,5 +49,18 @@ namespace Trollo.API.Controllers.V1
             };
             return _serviceInvoker.AsyncOkCreated(() => _boardService.Create(board));
         }
+        
+        [HttpPatch("[controller]/{boardId}")]
+        [SwaggerResponse(HttpStatusCode.OK, typeof(BoardVm))]
+        public Task<IActionResult> Update([FromRoute] Guid boardId, [FromBody] UpdateBoardRequest updateBoardRequest)
+        {
+            var userId = new Guid(User.FindFirstValue("id"));
+            var board = new Board
+            {
+                Title = updateBoardRequest.Title,
+                Id = boardId
+            };
+            return _serviceInvoker.AsyncOk(() => _boardService.Update(userId, board));
+        }
     }
 }
