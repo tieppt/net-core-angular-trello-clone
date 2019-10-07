@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace TrolloAPI.Data.Migrations
+namespace Trollo.API.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
     internal class AppDbContextModelSnapshot : ModelSnapshot

@@ -7,7 +7,7 @@ using Trollo.Common.Contracts.Responses;
 using Trollo.Common.Services.Contracts;
 using Trollo.Identity.Services.Contracts;
 
-namespace TrolloAPI.Controllers.V1
+namespace Trollo.API.Controllers.V1
 {
     public class AuthController : ClientV1ControllerBase
     {

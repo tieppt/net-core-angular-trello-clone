@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace TrolloAPI.Data.Entities
+namespace Trollo.API.Data.Entities
 {
     public class ListCard : BaseEntity
     {

@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using TrolloAPI.Data.Entities;
+using Trollo.API.Data.Entities;
 
-namespace TrolloAPI.Data.Configurations
+namespace Trollo.API.Data.Configurations
 {
     public class CardConfiguration : IEntityTypeConfiguration<Card>
     {

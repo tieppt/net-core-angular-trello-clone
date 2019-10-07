@@ -9,9 +9,9 @@ using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
 using Trollo.Common.Filters;
-using TrolloAPI.Extensions;
+using Trollo.API.Extensions;
 
-namespace TrolloAPI
+namespace Trollo.API
 {
     public class Startup
     {

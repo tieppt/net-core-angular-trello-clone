@@ -5,10 +5,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using Trollo.API.Data;
 using Trollo.Identity.Identity;
-using TrolloAPI.Data;
 
-namespace TrolloAPI.Extensions
+namespace Trollo.API.Extensions
 {
     public static class JwtExtension
     {

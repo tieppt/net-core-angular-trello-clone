@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Trollo.Common.Exceptions;
 
-namespace TrolloAPI.Controllers
+namespace Trollo.API.Controllers
 {
     public abstract class ApiControllerBase : Controller
     {

@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using TrolloAPI.Data;
+using Trollo.API.Data;
 
-namespace TrolloAPI.Data.Migrations
+namespace Trollo.API.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
     [Migration("20191001035148_UpdateConfiguration")]

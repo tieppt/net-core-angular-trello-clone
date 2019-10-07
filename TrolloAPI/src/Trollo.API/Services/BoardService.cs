@@ -4,12 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using Trollo.API.Data;
+using Trollo.API.Data.Entities;
+using Trollo.API.Services.Contracts;
 using Trollo.Common.ViewModels;
-using TrolloAPI.Data;
-using TrolloAPI.Data.Entities;
-using TrolloAPI.Services.Contracts;
 
-namespace TrolloAPI.Services
+namespace Trollo.API.Services
 {
     public class BoardService : IBoardService
     {

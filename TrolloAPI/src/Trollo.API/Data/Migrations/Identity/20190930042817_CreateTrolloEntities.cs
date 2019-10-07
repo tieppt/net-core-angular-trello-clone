@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace TrolloAPI.Data.Migrations.Identity
+namespace Trollo.API.Data.Migrations.Identity
 {
     public partial class CreateTrolloEntities : Migration
     {

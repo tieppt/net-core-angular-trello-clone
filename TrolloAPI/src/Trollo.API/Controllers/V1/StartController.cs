@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Trollo.Common.Contracts;
 
-namespace TrolloAPI.Controllers.V1
+namespace Trollo.API.Controllers.V1
 {
     public class StartController : ApiControllerBase
     {

@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
-using TrolloAPI.Data;
+using Trollo.API.Data;
 
-namespace TrolloAPI.Extensions
+namespace Trollo.API.Extensions
 {
     public static class AppExtension
     {

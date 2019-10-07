@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using TrolloAPI.Data;
+using Trollo.API.Data;
 
-namespace TrolloAPI.Data.Migrations.Identity
+namespace Trollo.API.Data.Migrations.Identity
 {
     [DbContext(typeof(AppIdentityDbContext))]
     [Migration("20190930042817_CreateTrolloEntities")]

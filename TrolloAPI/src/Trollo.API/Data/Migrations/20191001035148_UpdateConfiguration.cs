@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace TrolloAPI.Data.Migrations
+namespace Trollo.API.Data.Migrations
 {
     public partial class UpdateConfiguration : Migration
     {

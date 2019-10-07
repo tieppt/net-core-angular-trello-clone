@@ -8,9 +8,9 @@ using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
 using NSwag;
 using NSwag.Generation.Processors.Security;
-using TrolloAPI.Controllers.V1;
+using Trollo.API.Controllers.V1;
 
-namespace TrolloAPI.Extensions
+namespace Trollo.API.Extensions
 {
     public static class SwaggerExtension
     {

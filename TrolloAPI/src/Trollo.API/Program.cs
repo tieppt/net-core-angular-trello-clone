@@ -4,10 +4,10 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Trollo.API.Data;
 using Trollo.Identity.Identity;
-using TrolloAPI.Data;
 
-namespace TrolloAPI
+namespace Trollo.API
 {
     public class Program
     {

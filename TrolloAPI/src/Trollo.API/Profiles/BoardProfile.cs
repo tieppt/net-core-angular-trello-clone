@@ -1,9 +1,9 @@
 using System.Linq;
 using AutoMapper;
+using Trollo.API.Data.Entities;
 using Trollo.Common.ViewModels;
-using TrolloAPI.Data.Entities;
 
-namespace TrolloAPI.Profiles
+namespace Trollo.API.Profiles
 {
     public class BoardProfile : Profile
     {

@@ -1,6 +1,6 @@
 using System;
 
-namespace TrolloAPI.Data.Entities
+namespace Trollo.API.Data.Entities
 {
     public class Card : BaseEntity
     {

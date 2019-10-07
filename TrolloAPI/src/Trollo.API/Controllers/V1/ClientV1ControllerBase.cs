@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using NSwag.Annotations;
 using Trollo.Common.ViewModels;
 
-namespace TrolloAPI.Controllers.V1
+namespace Trollo.API.Controllers.V1
 {
     [SwaggerResponse(HttpStatusCode.NotFound, typeof(void))]
     [SwaggerResponse(HttpStatusCode.BadRequest, typeof(ApiError))]

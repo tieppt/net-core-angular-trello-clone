@@ -7,13 +7,13 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using NSwag.Annotations;
+using Trollo.API.Data.Entities;
+using Trollo.API.Services.Contracts;
 using Trollo.Common.Contracts.Requests;
 using Trollo.Common.Services.Contracts;
 using Trollo.Common.ViewModels;
-using TrolloAPI.Data.Entities;
-using TrolloAPI.Services.Contracts;
 
-namespace TrolloAPI.Controllers.V1
+namespace Trollo.API.Controllers.V1
 {
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class BoardController : ClientV1ControllerBase

@@ -1,13 +1,13 @@
 using Microsoft.Extensions.DependencyInjection;
+using Trollo.API.Services;
+using Trollo.API.Services.Contracts;
 using Trollo.Common.Filters;
 using Trollo.Common.Services;
 using Trollo.Common.Services.Contracts;
 using Trollo.Identity.Services;
 using Trollo.Identity.Services.Contracts;
-using TrolloAPI.Services;
-using TrolloAPI.Services.Contracts;
 
-namespace TrolloAPI.Extensions
+namespace Trollo.API.Extensions
 {
     public static class DependencyInjectionExtension
     {

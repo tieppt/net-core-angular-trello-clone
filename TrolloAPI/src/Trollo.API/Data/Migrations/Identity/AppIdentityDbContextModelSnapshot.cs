@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace TrolloAPI.Data.Migrations.Identity
+namespace Trollo.API.Data.Migrations.Identity
 {
     [DbContext(typeof(AppIdentityDbContext))]
     internal class AppIdentityDbContextModelSnapshot : ModelSnapshot

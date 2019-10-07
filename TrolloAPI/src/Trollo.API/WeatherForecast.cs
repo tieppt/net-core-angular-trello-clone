@@ -1,6 +1,6 @@
 using System;
 
-namespace TrolloAPI
+namespace Trollo.API
 {
     public class WeatherForecast
     {

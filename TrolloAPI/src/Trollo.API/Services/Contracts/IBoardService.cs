@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Trollo.API.Data.Entities;
 using Trollo.Common.ViewModels;
-using TrolloAPI.Data.Entities;
 
-namespace TrolloAPI.Services.Contracts
+namespace Trollo.API.Services.Contracts
 {
     public interface IBoardService
     {
