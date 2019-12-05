@@ -10,7 +10,7 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/TrolloAPI/src/Trollo.API/bin/Debug/netcoreapp3.0/Trollo.API.dll",
+            "program": "${workspaceFolder}/TrolloAPI/src/Trollo.API/bin/Debug/netcoreapp3.1/Trollo.API.dll",
             "args": [],
             "cwd": "${workspaceFolder}/TrolloAPI/src/Trollo.API",
             "stopAtEntry": false,

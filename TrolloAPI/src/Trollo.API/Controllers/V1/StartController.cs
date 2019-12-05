@@ -10,7 +10,8 @@ namespace Trollo.API.Controllers.V1
         {
             return Ok(new
             {
-                message = "App works!"
+                message = "App works!",
+                apiDoc = "/api/v1/docs"
             });
         }
     }
